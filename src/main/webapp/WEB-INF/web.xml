@@ -21,6 +21,16 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>AddTaskServlet</display-name>
+    <servlet-name>AddTaskServlet</servlet-name>
+    <servlet-class>com.ems.task.AddTaskServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddTaskServlet</servlet-name>
+    <url-pattern>/AddTaskServlet</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <description></description>
     <display-name>inserServelet</display-name>
     <servlet-name>inserServelet</servlet-name>
     <servlet-class>com.ems.user.inserServelet</servlet-class>
