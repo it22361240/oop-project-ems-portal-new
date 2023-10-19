@@ -9,7 +9,7 @@
 <body>
 <h1>hello this is login page</h1>
 <h2>Login Form</h2>
-    <form action="login" method="post">
+    <form action="loginServlet" method="post">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required><br><br>
         
