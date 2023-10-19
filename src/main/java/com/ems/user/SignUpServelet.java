@@ -9,10 +9,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
+
+import com.ems.db.DatabaseConnection;
 
 @WebServlet("/insert")
-public class inserServelet extends HttpServlet {
+public class SignUpServelet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,12 +30,14 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		String password = request.getParameter("psw");
 		
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			
-			
-			java.sql.Connection conn = DriverManager.getConnection(
-					  "jdbc:mysql://aws.connect.psdb.cloud/ems?sslMode=VERIFY_IDENTITY",
-					  "f4kgmlkcgg1nj2gu3wl3", "pscale_pw_fohYq855B06VthlpvUeOCfNR4pOdAOYJEE7TwzCUx5e");
+			// Establish a database connection
+            Connection conn = DatabaseConnection.getConnection();
+//			Class.forName("com.mysql.cj.jdbc.Driver");
+//			
+//			
+//			java.sql.Connection conn = DriverManager.getConnection(
+//					  "jdbc:mysql://aws.connect.psdb.cloud/ems?sslMode=VERIFY_IDENTITY",
+//					  "c53gw4xnosqq7gicnn2w", "pscale_pw_rwbyLe7tV6MvZSLQSCboKzGraNYgDodW7xe41cHJBPX");
 			java.sql.PreparedStatement ps = conn.prepareStatement("insert into user_details (Name, email, phone, username,password) values (?,? ,?, ?,?);");
 			ps.setString(1, name);
 			ps.setString(2, email);
@@ -63,6 +66,8 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 				rd.include(request, response);
 				
 			}
+			// Close the database connection
+            conn.close();
 
 			
 		}catch(Exception e){

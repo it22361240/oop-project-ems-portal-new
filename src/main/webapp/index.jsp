@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="./views/components/header.jsp" />
 <h1>hello this is login page</h1>
 <h2>Login Form</h2>
 <div>
@@ -27,6 +28,6 @@
             window.location.href = "studentInsert.jsp";
         };
     </script>
-
+<jsp:include page="./views/components/footer.jsp" />
 </body>
 </html>

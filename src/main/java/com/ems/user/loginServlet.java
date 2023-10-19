@@ -8,15 +8,17 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.DriverManager;
+import java.sql.Connection;
 import java.sql.ResultSet;
+
+import com.ems.db.DatabaseConnection;
 
 //import com.mysql.jdbc.Connection;
 //import com.mysql.jdbc.PreparedStatement;
 
 
 
-@WebServlet("/login")
+@WebServlet(name = "loginServlet", urlPatterns = {"/loginServlet"})
 public class  loginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
@@ -66,11 +68,13 @@ public class  loginServlet extends HttpServlet {
 		
 		
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			java.sql.Connection con = DriverManager.getConnection(
-			  "jdbc:mysql://aws.connect.psdb.cloud/ems?sslMode=VERIFY_IDENTITY",
-			  "f4kgmlkcgg1nj2gu3wl3", "pscale_pw_fohYq855B06VthlpvUeOCfNR4pOdAOYJEE7TwzCUx5e");
-			java.sql.PreparedStatement pst = con.prepareStatement("SELECT * FROM ems.user_details where username = ? and password =?;");
+			// Establish a database connection
+            Connection conn = DatabaseConnection.getConnection();
+//			Class.forName("com.mysql.cj.jdbc.Driver");
+//			java.sql.Connection con = DriverManager.getConnection(
+//			  "jdbc:mysql://aws.connect.psdb.cloud/ems?sslMode=VERIFY_IDENTITY",
+//			  "c53gw4xnosqq7gicnn2w", "pscale_pw_rwbyLe7tV6MvZSLQSCboKzGraNYgDodW7xe41cHJBPX");
+			java.sql.PreparedStatement pst = conn.prepareStatement("SELECT * FROM ems.user_details where username = ? and password =?;");
 			pst.setString(1, request.getParameter("username"));
 			pst.setString(2, request.getParameter("password"));
 			ResultSet row = pst.executeQuery();
@@ -100,6 +104,8 @@ public class  loginServlet extends HttpServlet {
 				
 			}
 			
+			// Close the database connection
+            conn.close();
 		}catch(Exception e){
 			PrintWriter out = response.getWriter();
 			out.print("not working....    ");
