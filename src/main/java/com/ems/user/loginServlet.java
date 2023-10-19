@@ -68,9 +68,8 @@ public class  loginServlet extends HttpServlet {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			java.sql.Connection con = DriverManager.getConnection(
-					  "jdbc:mysql://aws.connect.psdb.cloud/ems?sslMode=VERIFY_IDENTITY",
-					  "sfiwn7cqw9z6zwy5z0za",
-					  "pscale_pw_3acWCoHW6KWmWW2Sp0oPKZzhdNNOvlKUXZbdVAEEbDh");
+			  "jdbc:mysql://aws.connect.psdb.cloud/ems?sslMode=VERIFY_IDENTITY",
+			  "f4kgmlkcgg1nj2gu3wl3", "pscale_pw_fohYq855B06VthlpvUeOCfNR4pOdAOYJEE7TwzCUx5e");
 			java.sql.PreparedStatement pst = con.prepareStatement("SELECT * FROM ems.user_details where username = ? and password =?;");
 			pst.setString(1, request.getParameter("username"));
 			pst.setString(2, request.getParameter("password"));
@@ -81,6 +80,7 @@ public class  loginServlet extends HttpServlet {
 				
 				
 				// this is create the another jsp file and send data to this file
+				
 				String username = row.getString("username");
 			    String password = row.getString("password");
 			    String name = row.getString("Name");
