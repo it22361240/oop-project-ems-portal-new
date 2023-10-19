@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Login successfulley</h1>
+<h1>Login successfully</h1>
    <p>Received username: ${username}</p>
     <p>Received password: ${password}</p>
     <p>Received username: ${email}</p>

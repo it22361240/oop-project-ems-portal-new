@@ -31,12 +31,12 @@
   </servlet-mapping>
    <servlet>
     <description></description>
-    <display-name>inserServelet</display-name>
-    <servlet-name>inserServelet</servlet-name>
-    <servlet-class>com.ems.user.inserServelet</servlet-class>
+    <display-name>SignUpServlet</display-name>
+    <servlet-name>SignUpServlet</servlet-name>
+    <servlet-class>com.ems.user.SignUpServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>inserServelet</servlet-name>
-    <url-pattern>/inserServelet</url-pattern>
+    <servlet-name>SignUpServlet</servlet-name>
+    <url-pattern>/SignUpServlet</url-pattern>
   </servlet-mapping>
 </web-app>
