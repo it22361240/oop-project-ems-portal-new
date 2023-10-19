@@ -1,4 +1,4 @@
-package com.ems.login;
+package com.ems.user;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -11,8 +11,8 @@ import java.io.PrintWriter;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
+//import com.mysql.jdbc.Connection;
+//import com.mysql.jdbc.PreparedStatement;
 
 
 
@@ -69,8 +69,8 @@ public class  loginServlet extends HttpServlet {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			java.sql.Connection con = DriverManager.getConnection(
 					  "jdbc:mysql://aws.connect.psdb.cloud/ems?sslMode=VERIFY_IDENTITY",
-					  "5fcctylhdxvvpq1rq8of",
-					  "pscale_pw_r3EiQxHiykDiKanr8wrXWszeSNYiolllrJWuJ15c9qG");
+					  "sfiwn7cqw9z6zwy5z0za",
+					  "pscale_pw_3acWCoHW6KWmWW2Sp0oPKZzhdNNOvlKUXZbdVAEEbDh");
 			java.sql.PreparedStatement pst = con.prepareStatement("SELECT * FROM ems.user_details where username = ? and password =?;");
 			pst.setString(1, request.getParameter("username"));
 			pst.setString(2, request.getParameter("password"));

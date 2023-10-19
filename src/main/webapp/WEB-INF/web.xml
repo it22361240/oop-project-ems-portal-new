@@ -13,7 +13,7 @@
     <description></description>
     <display-name>loginServlet</display-name>
     <servlet-name>loginServlet</servlet-name>
-    <servlet-class>com.ems.login.loginServlet</servlet-class>
+    <servlet-class>com.ems.user.loginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>loginServlet</servlet-name>

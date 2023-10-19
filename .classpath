@@ -8,16 +8,5 @@
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="/Users/navin/Downloads/apache-tomcat-10.1.14/lib/servlet-api.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="https://jakarta.ee/specifications/servlet/6.0/apidocs/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/navin/Desktop/CustomerDemo 2/WebContent/WEB-INF/lib/javax.servlet-3.1.jar"/>
-	<classpathentry kind="lib" path="/Users/navin/Desktop/CustomerDemo 2/WebContent/WEB-INF/lib/jstl-1.2.jar"/>
-	<classpathentry kind="lib" path="/Users/navin/Desktop/CustomerDemo 2/WebContent/WEB-INF/lib/jstl-api-1.2.jar"/>
-	<classpathentry kind="lib" path="/Users/navin/Desktop/CustomerDemo 2/WebContent/WEB-INF/lib/mysql-connector-java-5.1.48-bin.jar"/>
-	<classpathentry kind="lib" path="/Users/navin/Desktop/CustomerDemo 2/WebContent/WEB-INF/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="/Users/navin/Downloads/jar_files/mysql-connector-java-8.0.11.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
