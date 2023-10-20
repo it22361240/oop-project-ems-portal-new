@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form action="SignUpServlet" method="post">
+<form action="../../SignUpServlet" method="post">
 		Name <input type="text" name="name"><br>
 		Email <input type="text" name="email"><br>
 		Phone Number <input type="text" name="phone"><br>

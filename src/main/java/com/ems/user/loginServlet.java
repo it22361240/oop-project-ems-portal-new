@@ -91,7 +91,7 @@ public class  loginServlet extends HttpServlet {
 			    String email = row.getString("email");
 			    int phone = row.getInt("phone");
 				
-				RequestDispatcher dip = request.getRequestDispatcher("registration.jsp");
+				RequestDispatcher dip = request.getRequestDispatcher("./views/users/profile.jsp");
 				request.setAttribute("username", username);
 				request.setAttribute("password", password);	
 				request.setAttribute("name", name);
