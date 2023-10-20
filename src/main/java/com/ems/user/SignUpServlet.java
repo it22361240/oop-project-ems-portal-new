@@ -12,16 +12,13 @@ import java.sql.Connection;
 
 import com.ems.db.DatabaseConnection;
 
-@WebServlet("/insert")
-public class SignUpServelet extends HttpServlet {
+@WebServlet(name = "SignUpServlet", urlPatterns = {"/SignUpServlet"})
+public class SignUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	PrintWriter out = response.getWriter();
-	
-	
-	
 	
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
@@ -53,7 +50,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 				out.print("<h3 style ='color:green'> User registration successful page<h3>");
 				System.out.println("success");
 				
-				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("./index.jsp");
 				rd.include(request, response);
 
 				
