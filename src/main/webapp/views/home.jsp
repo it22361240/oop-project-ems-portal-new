@@ -22,6 +22,9 @@
     </form>
     <button id="register-button"> Register</button>
 </div>
+
+	<a href="./Image/addImage.jsp">Add the image</a>
+
 <script>
         document.getElementById("register-button").onclick = function () {
             // Redirect to a new page
