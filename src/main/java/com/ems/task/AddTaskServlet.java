@@ -44,7 +44,7 @@ public class AddTaskServlet extends HttpServlet {
             marksStmt.executeUpdate();
             
             // Close the database connection
-            conn.close();
+            DatabaseConnection.closeConnection(conn);
             
             // Redirect to a success page
             response.sendRedirect("./views/tasks/addtask.jsp");
