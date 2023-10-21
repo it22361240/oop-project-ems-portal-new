@@ -29,7 +29,7 @@
     <servlet-name>AddTaskServlet</servlet-name>
     <url-pattern>/AddTaskServlet</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <description></description>
     <display-name>SignUpServlet</display-name>
     <servlet-name>SignUpServlet</servlet-name>
@@ -49,5 +49,14 @@
     <servlet-name>AddImageServlet</servlet-name>
     <url-pattern>/AddImageServlet</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <description></description>
+    <display-name>DisplayServlet</display-name>
+    <servlet-name>DisplayServlet</servlet-name>
+    <servlet-class>com.ems.essay.DisplayServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DisplayServlet</servlet-name>
+    <url-pattern>/DisplayServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
