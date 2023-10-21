@@ -47,11 +47,11 @@ public class AddTaskServlet extends HttpServlet {
             conn.close();
             
             // Redirect to a success page
-            response.sendRedirect("success.jsp");
+            response.sendRedirect("./views/tasks/addtask.jsp");
         } catch (SQLException e) {
             e.printStackTrace();
             // Handle the database error
-            response.sendRedirect("error.jsp");
+            response.sendRedirect("./views/tasks/addtask.jsp");
         }
     }
 }

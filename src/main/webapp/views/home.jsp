@@ -22,9 +22,11 @@
     </form>
     <button id="register-button"> Register</button>
 </div>
-
-	<a href="./Image/addImage.jsp">Add the image</a>
-
+<div>
+<h1>Testing new Function - This section will be removed later</h1>
+	<a href="./tasks/addtask.jsp">Create New Task</a>
+  <a href="./Image/addImage.jsp">Add the image</a>
+</div>
 <script>
         document.getElementById("register-button").onclick = function () {
             // Redirect to a new page
