@@ -16,8 +16,8 @@ public class DatabaseConnection {
 //            String password = config.getDatabasePassword();
 
             String jdbcUrl = "jdbc:mysql://aws.connect.psdb.cloud/ems?sslMode=VERIFY_IDENTITY";
-            String username = "c53gw4xnosqq7gicnn2w";
-            String password = "pscale_pw_rwbyLe7tV6MvZSLQSCboKzGraNYgDodW7xe41cHJBPX";
+            String username = "0fgifd8g0kl0me2ns1i0";
+            String password = "pscale_pw_EDsdjJX8xYdMKGbX0n8FULAmEgg6sCnAtIig3WKrs0P";
 
             Connection conn = DriverManager.getConnection(jdbcUrl, username, password);
             System.out.println("Connected to the database!");
