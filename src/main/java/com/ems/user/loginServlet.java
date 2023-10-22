@@ -32,11 +32,8 @@ public class  loginServlet extends HttpServlet {
 		try {
 			// Establish a database connection
             Connection conn = DatabaseConnection.getConnection();
-//			Class.forName("com.mysql.cj.jdbc.Driver");
-//			java.sql.Connection con = DriverManager.getConnection(
-//			  "jdbc:mysql://aws.connect.psdb.cloud/ems?sslMode=VERIFY_IDENTITY",
-//			  "c53gw4xnosqq7gicnn2w", "pscale_pw_rwbyLe7tV6MvZSLQSCboKzGraNYgDodW7xe41cHJBPX");
-			java.sql.PreparedStatement pst = conn.prepareStatement("SELECT * FROM ems.user_details where username = ? and password =?;");
+
+			java.sql.PreparedStatement pst = conn.prepareStatement("SELECT * FROM ems.users where username = ? and password = ?;");
 			pst.setString(1, request.getParameter("username"));
 			pst.setString(2, request.getParameter("password"));
 			ResultSet row = pst.executeQuery();
@@ -49,7 +46,7 @@ public class  loginServlet extends HttpServlet {
 				String id = row.getString("id");
 				String username = row.getString("username");
 			    String password = row.getString("password");
-			    String name = row.getString("Name");
+			    String name = row.getString("uName");
 			    String email = row.getString("email");
 			    int phone = row.getInt("phone");
 			    System.out.println(id);

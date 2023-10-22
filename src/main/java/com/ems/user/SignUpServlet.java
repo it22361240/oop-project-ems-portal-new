@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 import com.ems.db.DatabaseConnection;
 
@@ -25,25 +26,31 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		String phone = request.getParameter("phone");
 		String username = request.getParameter("uid");
 		String password = request.getParameter("psw");
+		String role = request.getParameter("role");
+		String[] selectedSubjects = request.getParameterValues("subject");
+		
 		
 		try {
 			// Establish a database connection
             Connection conn = DatabaseConnection.getConnection();
-//			Class.forName("com.mysql.cj.jdbc.Driver");
-//			
-//			
-//			java.sql.Connection conn = DriverManager.getConnection(
-//					  "jdbc:mysql://aws.connect.psdb.cloud/ems?sslMode=VERIFY_IDENTITY",
-//					  "c53gw4xnosqq7gicnn2w", "pscale_pw_rwbyLe7tV6MvZSLQSCboKzGraNYgDodW7xe41cHJBPX");
-			java.sql.PreparedStatement ps = conn.prepareStatement("insert into user_details (Name, email, phone, username,password) values (?,? ,?, ?,?);");
+
+			java.sql.PreparedStatement ps = conn.prepareStatement("insert into users (uName, email, phone, username, password, role) values (?, ?, ?, ?, ?, ?);");
 			ps.setString(1, name);
 			ps.setString(2, email);
 			ps.setInt(3, Integer.parseInt(phone));
 			ps.setString(4, username);
 			ps.setString(5, password);
-			
-			
+			ps.setString(6, role);
+
 			int count = ps.executeUpdate();
+			
+			PreparedStatement ss = conn.prepareStatement("insert into subjects (uName, subName) values (?, ?);");
+			for (String subject : selectedSubjects) {
+				ss.setString(1, username);
+				ss.setString(2, subject);
+				ss.executeUpdate();
+			}
+	
 			if(count > 0) {
 				
 				response.setContentType("text/html");
@@ -53,8 +60,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 				RequestDispatcher rd = request.getRequestDispatcher("./index.jsp");
 				rd.include(request, response);
 
-				
-			}else {
+			} else {
 				
 				response.setContentType("text/html");
 				out.print("<h3 style ='color:red'> User registration unsuccessful page<h3>");
@@ -65,9 +71,8 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			}
 			// Close the database connection
             DatabaseConnection.closeConnection(conn);
-
 			
-		}catch(Exception e){
+		} catch(Exception e){
 			out.print("not working....    ");
 			e.printStackTrace();
 			System.out.println(e);
