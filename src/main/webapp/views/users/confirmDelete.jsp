@@ -7,7 +7,7 @@
     <title>Delete Account Confirmation</title>
 </head>
 <body>
-    <form action="../../DeleteUserServlet" method="delete">
+    <form action="../../DeleteUserServlet" method="DELETE">
         <input type="hidden" name="userId" value="${param.id}">
 
         <label for="name">Name:</label>
