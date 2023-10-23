@@ -64,7 +64,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 				
 			}
 			// Close the database connection
-            conn.close();
+            DatabaseConnection.closeConnection(conn);
 
 			
 		}catch(Exception e){

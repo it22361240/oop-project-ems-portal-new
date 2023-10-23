@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+        footer {
+            background-color: #007bff; /* Blue background color */
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            background: linear-gradient(to bottom, #007bff, #0056b3); /* Gradient effect */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Box shadow for card-like effect */
+            border-radius: 10px; /* Rounded corners */
+        }
+
+        footer .col-md-4 {
+            padding: 0 20px;
+        }
+
+        footer h4 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 16px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        footer ul li a:hover {
+            color: #f7f7f7;
+        }

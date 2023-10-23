@@ -1,5 +1,11 @@
 package com.ems.essay;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.sql.*;
+
+import com.ems.db.DatabaseConnection;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -7,59 +13,78 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
-import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
-import com.ems.db.DatabaseConnection;
-
-//@WebServlet("/AddImageServlet")
-@WebServlet(name = "AddImageServlet", urlPatterns = {"/AddImageServlet"})
 @MultipartConfig
+@WebServlet(name = "AddImageServlet", urlPatterns = {"/AddImageServlet"})
 public class AddImageServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-    private static final String UPLOAD_DIRECTORY = "/project/src/main/webapp/views/Image/UploadedPhotos"; // Update with your directory path
+	private static final long serialVersionUID = 1L;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        try {
-            Part filePart = request.getPart("file");
-            String fileName = getSubmittedFileName(filePart);
+	public AddImageServlet() {
+		super();
+	}
 
-            if (fileName != null && !fileName.isEmpty()) {
-                try (InputStream fileContent = filePart.getInputStream();
-                	Connection conn = DatabaseConnection.getConnection();
-                     PreparedStatement stmt = conn.prepareStatement("INSERT INTO images (image_data) VALUES (?)")) {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Default doGet method implementation
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
 
-                    stmt.setBinaryStream(1, fileContent);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Handle image upload in the doPost method
+		
+		System.out.println("In do post method of Add Image servlet.");
+		Part file = request.getPart("image");
+		
+		String imageFileName = file.getSubmittedFileName();  // Get the selected image file name
+		System.out.println("Selected Image File Name : " + imageFileName);
+		
+		// Define the upload path where we will save the uploaded image
+		String uploadPath = "oop-project-ems-portal-new/src/main/webapp/views/Image/UploadedImages/" + imageFileName;
+		System.out.println("Upload Path : " + uploadPath);
+		
+		// Uploading the selected image into the specified folder
+		try {
+			FileOutputStream fos = new FileOutputStream(uploadPath);
+			InputStream is = file.getInputStream();
+			
+			byte[] data = new byte[is.available()];
+			is.read(data);
+			fos.write(data);
+			fos.close();
+			
+		} catch (Exception e) {
+			// Handle exceptions related to file upload
+			e.printStackTrace();
+		}
+		
+		// Establish a database connection and insert image information
+		
+		Connection conn = DatabaseConnection.getConnection();
+		
+		try {
+			PreparedStatement stmt;
+			String query = "INSERT INTO Images(imageFileName) VALUES(?)";
+			
 
-                    stmt.executeUpdate();
-                    // Close the database connection
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                    response.sendRedirect("error.jsp"); // Handle database error
-                    return;
-                }
-
-                response.sendRedirect("success.jsp"); // Redirect to success page
-            } else {
-                response.sendRedirect("error.jsp"); // Handle cases where no file was submitted
-            }
-            
-        } catch (IOException | ServletException e) {
-            e.printStackTrace();
-            response.sendRedirect("error.jsp"); // Handle other exceptions
-        }
-    }
-
-    private String getSubmittedFileName(Part part) {
-        for (String content : part.getHeader("content-disposition").split(";")) {
-            if (content.trim().startsWith("filename")) {
-                return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");
-            }
-        }
-        return null;
-    }
+//CREATE TABLE Images (
+//    id INT AUTO_INCREMENT PRIMARY KEY,
+//    imageFileName VARCHAR(255) NOT NULL
+//);
+			
+			
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, imageFileName);
+			int rowsAffected = stmt.executeUpdate(); // Number of rows affected by the insert query
+			
+			conn.close();
+			if (rowsAffected > 0) {
+				System.out.println("Image added into the database successfully.");
+			} else {
+				System.out.println("Failed to upload the image or update the database.");
+			}
+			
+		} catch (Exception e) {
+			// Handle exceptions related to database connection and query execution
+			System.out.println(e);
+		}
+	}
 }

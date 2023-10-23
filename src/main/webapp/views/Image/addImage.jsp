@@ -1,17 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Image Upload</title>
+<meta charset="ISO-8859-1">
+<title>Add Image</title>
 </head>
 <body>
-    <h2>Upload an Image</h2>
-    <form action="../../AddImageServlet" method="post" enctype="multipart/form-data">
-        <label for="file">Choose a JPG image:</label>
-        <input type="file" name="file" accept=".jpg" required>
-        <br><br>
-        <input type="submit" value="Upload">
-    </form>
+<h1 >ADD IMAGE</h1>
+
+<div align="center">
+
+<form action="../../AddImageServlet" method="post" enctype="multipart/form-data">
+   Select Image :
+   <input type="file" name="image">
+   <input type="submit" value="Add Image">
+</form>
+
+</div>
+
 </body>
 </html>

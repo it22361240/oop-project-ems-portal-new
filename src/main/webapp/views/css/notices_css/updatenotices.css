@@ -1,0 +1,68 @@
+@charset "UTF-8";
+    body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* CSS for the form */
+        form {
+            width: 500px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* CSS for form labels and inputs */
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        input[type="number"],
+        input[type="text"],
+        textarea {
+            width: 90%;
+            padding: 15px;
+            margin-top: 60px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            height: 150px;
+        }
+
+        /* CSS for the submit button */
+        input[type="submit"] {
+            display: block;
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Additional styling for professional appearance */
+        h1 {
+            color: #007bff;
+            text-align: center;
+            font-size: 45px;
+            padding:50px
+        }
+
+        /* Styling for form labels */
+        label {
+            font-weight: bold;
+        }
+    
