@@ -5,15 +5,18 @@
 </head>
 <body>
     <h2>MCQ Paper</h2>
-    <form action="../../../AddTaskServlet" method="post" onsubmit="openSuccessModal()">
+    <form action="../../../AddTaskServlet" method="post">
         <label for="taskName">Task Name:</label>
         <input type="text" name="taskName" required><br><br>
+        <label for="subjectName">Subject Name :</label><br>
         
         <%
         // Loop question
-        for(int i = 0; i < 2; i++) {
+        int question = 1;
+        for(int i = 0; i < question; i++) {
         %>
 	        <!-- Question 01 -->
+	        <input type="hidden" name="qCount" value="<%= question %>">
 	        <label for="question<%= i + 1 %>">Question <%= i + 1 %>:</label>
 	        <input type="text" name = "question<%= i + 1 %>" required><br>
         
@@ -29,7 +32,7 @@
         
         <!-- Correct Answer -->
         <label for="cAns<%= i + 1 %>">Correct Answer for Question <%= i + 1 %>: </label>
-        <input type="number" name="cAns<%= i + 1 %>" required><br>
+        <input type="number" name="cAnswer<%= i + 1 %>" required><br>
         
         <!-- Assigned Marks For the Question -->
         <label for="mark<%= i + 1 %>">Marks for the question <%= i + 1 %>:</label>
@@ -40,31 +43,5 @@
         <!-- Submit Form -->
         <input type="submit" value="Submit">
     </form>
-
-    <!-- Success modal -->
-    <div id="successModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeSuccessModal()">&times;</span>
-            <p>Success: Your task was added successfully!</p>
-        </div>
-    </div>
-
-    <script>
-    // Function to open the success modal
-    function openSuccessModal() {
-        var success = <%= request.getAttribute("success") %>;
-        if (success) {
-            document.getElementById("successModal").style.display = "block";
-        }
-    }
-
-    // Function to close the success modal
-    function closeSuccessModal() {
-        document.getElementById("successModal").style display = "none";
-    }
-    
-    window.onload = openSuccessModal; // Corrected function name
-</script>
-
 </body>
 </html>
