@@ -1,4 +1,4 @@
-<!-- This Is The Main Notice Notice View For Techers -->
+<!-- This Is The Main Notice Notice View For Teachers -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -11,7 +11,7 @@
     <h1>Notices</h1>
     <table border="1">
         <tr>
-            <th>ID</th>
+            <th>Notice Number</th>
             <th>Title</th>
             <th>Content</th>
             <th>Created At</th>

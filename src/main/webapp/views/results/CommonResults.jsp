@@ -48,13 +48,13 @@
         %>
     </table>
     
-    <!--    for the another CRUD operation as fill re correction form by the students
+    <!--    for the another CRUD operation as fill re correction form by the students-->
      <h1>Fill the re correction form for students</h1>
-    <form action="" method="post">
+    <form action="../../AddRecorrectionServlet" method="post">
         Student ID: <input type="text" name="studentID"><br>
-        Subject: <input type="text" name="text"><br>
-        <input type="submit" value="Update Result">
-    </form> -->
+        Subject: <input type="text" name="subject"><br>
+        <input type="submit" value="Add Recorrection">
+    </form> 
     <br>
 </body>
 </html>

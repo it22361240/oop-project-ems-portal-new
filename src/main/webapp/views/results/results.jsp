@@ -47,6 +47,16 @@
             }
         %>
     </table>
+    
+
+    <h1>Add Result</h1>
+    <form action="../../AddResultServlet" method="post">
+        Student ID: <input type="text" name="studentID"><br>
+        Student Name: <input type="text" name="studentName"><br>
+        Subject: <input type="text" name="subject"><br>
+        Marks: <input type="text" name="marks"><br>
+        <input type="submit" value="Add Result">
+    </form>
         
     <h1>Update Result</h1>
     <form action="../../UpdateResultServlet" method="post">
@@ -63,5 +73,6 @@
 
     <br>
     <a href="./views/results/results.jsp">Add Result</a>
+    <a href="./teacherRecorrection.jsp">Re corrections</a>
 </body>
 </html>
